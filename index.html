@@ -312,17 +312,12 @@ nav {
 }
 .product-tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .product-price {
-  margin-top: 8px;
-  padding: 6px 10px;
-  background: rgba(212,255,71,0.1);
-  border: 1px solid rgba(212,255,71,0.3);
-  border-radius: 6px;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  color: var(--accent);
-  display: inline-block;
-  letter-spacing: 0.5px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+  margin-top: 4px;
 }
 
 .product-score { text-align: center; flex-shrink: 0; }
@@ -3119,10 +3114,10 @@ function updateCardPrices() {
       priceEl = document.createElement('div');
       priceEl.className = 'product-price';
       
-      // Insert after product-tags
-      const productInfo = card.querySelector('.product-info');
-      if (productInfo) {
-        productInfo.appendChild(priceEl);
+      // Insert into the score container
+      const scoreContainer = card.querySelector('.product-score');
+      if (scoreContainer) {
+        scoreContainer.appendChild(priceEl);
       }
     }
     
