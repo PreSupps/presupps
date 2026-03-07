@@ -3930,9 +3930,20 @@ function closeMobileMenu() {
 // ============================================================
 // INIT
 // ============================================================
+// Handle browser back/forward buttons
+window.addEventListener('popstate', (event) => {
+  if (event.state && event.state.page) {
+    navigate(event.state.page, event.state.filter, event.state.ingId);
+  } else {
+    const hash = window.location.hash.substring(1);
+    navigate(hash || 'home');
+  }
+});
+
 // Load price data from Google Sheets first
 loadPriceData().then(() => {
-  navigate('home');
+  const initialPage = window.location.hash.substring(1) || 'home';
+  navigate(initialPage);
   
   // Render Where to Buy section for product page on load
   setTimeout(() => {
