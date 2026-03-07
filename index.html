@@ -311,6 +311,20 @@ nav {
   font-size: 22px; line-height: 1.1; letter-spacing: -0.3px; margin: 2px 0 6px;
 }
 .product-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.product-price {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: rgba(212,255,71,0.1);
+  border: 1px solid rgba(212,255,71,0.3);
+  border-radius: 6px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--accent);
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
 .product-score { text-align: center; flex-shrink: 0; }
 .score-num {
   font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
@@ -3072,10 +3086,48 @@ async function loadPriceData() {
     });
     
     console.log('✅ Price data loaded from Google Sheets');
+    
+    // Update prices on product cards
+    updateCardPrices();
   } catch (error) {
     console.error('❌ Error loading price data:', error);
     // Fall back to default generated prices
   }
+}
+
+// Update price per serving on homepage cards
+function updateCardPrices() {
+  document.querySelectorAll('.preworkout-card').forEach(card => {
+    const productId = card.getAttribute('data-pid');
+    const product = PRODUCTS[productId];
+    
+    if (!product) return;
+    
+    // Calculate best price from stores
+    let pricePerServing = product.priceServing;
+    
+    if (product.stores && product.stores.length > 0) {
+      const bestPrice = Math.min(...product.stores.map(s => s.price));
+      pricePerServing = `$${(bestPrice / product.servings).toFixed(2)}`;
+    }
+    
+    // Check if price element already exists
+    let priceEl = card.querySelector('.product-price');
+    
+    if (!priceEl) {
+      // Create price element
+      priceEl = document.createElement('div');
+      priceEl.className = 'product-price';
+      
+      // Insert after product-tags
+      const productInfo = card.querySelector('.product-info');
+      if (productInfo) {
+        productInfo.appendChild(priceEl);
+      }
+    }
+    
+    priceEl.textContent = `${pricePerServing}/serving`;
+  });
 }
 
 // ============================================================
@@ -3935,6 +3987,7 @@ window.addEventListener('popstate', (event) => {
   if (event.state && event.state.page) {
     navigate(event.state.page, event.state.filter, event.state.ingId);
   } else {
+    // If no state, check URL hash
     const hash = window.location.hash.substring(1);
     navigate(hash || 'home');
   }
@@ -3942,6 +3995,7 @@ window.addEventListener('popstate', (event) => {
 
 // Load price data from Google Sheets first
 loadPriceData().then(() => {
+  // Check if there's a hash in URL on initial load
   const initialPage = window.location.hash.substring(1) || 'home';
   navigate(initialPage);
   
