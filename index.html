@@ -3095,6 +3095,12 @@ function navigate(page, filter, ingId) {
   pageEl.classList.add('page');
   void pageEl.offsetWidth;
 
+  // Update browser URL without reloading page
+  const url = page === 'home' ? '/' : `#${page}`;
+  if (window.location.hash !== url) {
+    history.pushState({ page, filter, ingId }, '', url);
+  }
+
   // If navigating to any product page, render Where to Buy section
   if (page.startsWith('product')) {
     // Extract product ID from page name
