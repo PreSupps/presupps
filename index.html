@@ -1440,6 +1440,8 @@ nav {
     <button class="tab tab-pump" onclick="filterCat('pump',this)"><span class="dot" style="background:var(--pump)"></span> Pump</button>
     <button class="tab tab-focus" onclick="filterCat('focus',this)"><span class="dot" style="background:var(--focus)"></span> Focus</button>
     <button class="tab tab-end" onclick="filterCat('endurance',this)"><span class="dot" style="background:var(--endurance)"></span> Endurance</button>
+    <button class="tab tab-adapt" onclick="filterCat('adaptogen',this)"><span class="dot" style="background:var(--endurance)"></span> Adaptogens</button>
+    <button class="tab tab-other" onclick="filterCat('other',this)"><span class="dot" style="background:var(--pump)"></span> Other</button>
     <div class="search-wrap">
       <span class="search-icon">🔍</span>
       <input class="search-input" type="text" placeholder="Search ingredients..." oninput="searchIng(this.value)">
@@ -1598,7 +1600,7 @@ nav {
 
     <!-- FOCUS -->
     <div class="category-section" data-cat="focus">
-      <div class="cat-header"><span class="cat-title focus">🧠 Focus</span><div class="cat-line"></div><span class="cat-count">4 ingredients</span></div>
+      <div class="cat-header"><span class="cat-title focus">🧠 Focus</span><div class="cat-line"></div><span class="cat-count">5 ingredients</span></div>
       <div class="ingredients-grid">
 
         <div id="ing-alphagpc" class="ing-card focus" onclick="this.classList.toggle('expanded')">
@@ -1610,6 +1612,18 @@ nav {
             <p>Alpha GPC converts to acetylcholine in the brain — the primary neurotransmitter for muscle contractions and cognition. In the gym, this means better mind-muscle connection, sharper focus, and improved reaction time. Studies show 600mg can significantly increase peak bench press power output.</p>
             <div class="eff-row"><span class="eff-text">Effectiveness</span><span class="eff-stars-i">★★★★★</span></div>
             <div class="ing-found-in"><div class="found-label">Found in</div><div class="found-tags"><span class="found-tag" onclick="navigate('product')">Gorilla Mode</span><span class="found-tag">Woke AF</span></div></div>
+          </div>
+        </div>
+
+        <div id="ing-huperzine" class="ing-card focus" onclick="this.classList.toggle('expanded')">
+          <div class="ing-card-top"><div><div class="ing-name">Huperzine A</div><div class="ing-aka">Also: Huperzia Serrata Extract, Hup-A</div></div><span class="ing-badge focus">Focus</span></div>
+          <p class="ing-summary">Potent acetylcholinesterase inhibitor that prevents acetylcholine breakdown. Dramatically improves focus, memory, and mind-muscle connection. Found in 60%+ of pre-workouts.</p>
+          <div class="ing-meta"><div class="ing-meta-item"><div class="ing-meta-label">Clinical Dose</div><div class="ing-meta-val">50–200mcg</div></div><div class="ing-meta-item"><div class="ing-meta-label">Onset</div><div class="ing-meta-val">30–45 min</div></div><div class="ing-meta-item"><div class="ing-meta-label">Duration</div><div class="ing-meta-val">4–6 hours</div></div></div>
+          <div class="expand-btn">Learn more <span class="expand-arrow">▾</span></div>
+          <div class="ing-expand">
+            <p>Huperzine A works differently than choline sources like Alpha GPC — instead of increasing acetylcholine production, it prevents its breakdown by inhibiting acetylcholinesterase. This keeps acetylcholine levels elevated longer, sustaining razor-sharp focus throughout your entire workout. The dose is measured in micrograms (mcg), not milligrams — a little goes a long way. Pairs synergistically with Alpha GPC or Citicoline for maximum cognitive enhancement. Nearly universal in modern pre-workouts.</p>
+            <div class="eff-row"><span class="eff-text">Effectiveness</span><span class="eff-stars-i">★★★★★</span></div>
+            <div class="ing-found-in"><div class="found-label">Found in</div><div class="found-tags"><span class="found-tag">Gorilla Mode</span><span class="found-tag">Total War</span><span class="found-tag">C4 Ultimate</span><span class="found-tag">Ghost Legend</span></div></div>
           </div>
         </div>
 
@@ -1721,7 +1735,7 @@ nav {
     </div>
 
     <!-- ADAPTOGENS / RECOVERY -->
-    <div class="category-section" data-cat="endurance">
+    <div class="category-section" data-cat="adaptogen">
       <div class="cat-header"><span class="cat-title endurance">🌿 Adaptogens / Recovery</span><div class="cat-line"></div><span class="cat-count">1 ingredient</span></div>
       <div class="ingredients-grid">
 
@@ -1734,6 +1748,26 @@ nav {
             <p>Ashwagandha is one of the most well-researched adaptogens in sports nutrition. It works by regulating the hypothalamic-pituitary-adrenal (HPA) axis, reducing cortisol spikes from stress and intense training. Studies show 600mg daily reduces cortisol by up to 30%, improves recovery markers, and even increases testosterone in men. KSM-66 is the gold standard extract with the most clinical backing. Takes 2-4 weeks of daily use to feel full effects.</p>
             <div class="eff-row"><span class="eff-text">Effectiveness</span><span class="eff-stars-i">★★★★★</span></div>
             <div class="ing-found-in"><div class="found-label">Found in</div><div class="found-tags"><span class="found-tag">Gorilla Mode</span><span class="found-tag">Transparent Labs BULK</span></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ABSORPTION / VITAMINS -->
+    <div class="category-section" data-cat="other">
+      <div class="cat-header"><span class="cat-title pump">⚡ Absorption / Vitamins</span><div class="cat-line"></div><span class="cat-count">1 ingredient</span></div>
+      <div class="ingredients-grid">
+
+        <div id="ing-bioperine" class="ing-card other" onclick="this.classList.toggle('expanded')">
+          <div class="ing-card-top"><div><div class="ing-name">BioPerine</div><div class="ing-aka">Also: Black Pepper Extract, Piperine</div></div><span class="ing-badge pump">Absorption</span></div>
+          <p class="ing-summary">Patented black pepper extract that dramatically enhances nutrient absorption. Makes every other ingredient in your pre-workout significantly more effective. Found in 70%+ of quality formulas.</p>
+          <div class="ing-meta"><div class="ing-meta-item"><div class="ing-meta-label">Clinical Dose</div><div class="ing-meta-val">5–10mg</div></div><div class="ing-meta-item"><div class="ing-meta-label">Absorption Boost</div><div class="ing-meta-val">Up to 2000%</div></div><div class="ing-meta-item"><div class="ing-meta-label">Research</div><div class="ing-meta-val" style="color:#4cff8a">Excellent</div></div></div>
+          <div class="expand-btn">Learn more <span class="expand-arrow">▾</span></div>
+          <div class="ing-expand">
+            <p>BioPerine is standardized to 95% piperine, the active compound in black pepper that inhibits enzymes responsible for breaking down nutrients in the gut. This allows significantly more of each ingredient to enter your bloodstream intact. Studies show it can increase curcumin absorption by 2000%, beta-carotene by 60%, and numerous amino acids by 30-60%. The dose is tiny (5-10mg) but the impact is massive — it's force-multiplication for your entire formula. This is why nearly every premium pre-workout includes it. An absolute no-brainer ingredient.</p>
+            <div class="eff-row"><span class="eff-text">Effectiveness</span><span class="eff-stars-i">★★★★★</span></div>
+            <div class="ing-found-in"><div class="found-label">Found in</div><div class="found-tags"><span class="found-tag">Gorilla Mode</span><span class="found-tag">Total War</span><span class="found-tag">C4 Ultimate</span><span class="found-tag">Ghost Legend</span></div></div>
           </div>
         </div>
 
