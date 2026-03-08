@@ -495,6 +495,30 @@ nav {
 .fact-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
 .fact-value { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px; color: var(--text); }
 
+/* Supplement Facts Label Section */
+.supplement-facts-section {
+  max-width: 1100px; margin: 40px auto 0; padding: 0 32px;
+}
+.supplement-facts-container {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px; margin-bottom: 32px;
+}
+.supplement-facts-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 16px; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.supplement-facts-image {
+  width: 100%; max-width: 500px; height: auto;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: white; padding: 12px;
+  display: block; margin: 0 auto;
+}
+.supplement-facts-note {
+  font-size: 12px; color: var(--muted); margin-top: 12px; text-align: center;
+}
+
 .product-body {
   max-width: 1100px; margin: 0 auto; padding: 0 32px 80px;
   display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start;
@@ -1715,6 +1739,18 @@ nav {
       </div>
     </div>
   </div>
+  
+  <!-- Supplement Facts Label -->
+  <div class="supplement-facts-section">
+    <div class="supplement-facts-container">
+      <div class="supplement-facts-title">📄 Supplement Facts</div>
+      <img src="https://via.placeholder.com/500x700/1a1a1a/d4ff47?text=Upload+Supplement+Facts+Label+Here" 
+           alt="HTLT Pre-Workout 3.0 Supplement Facts" 
+           class="supplement-facts-image">
+      <div class="supplement-facts-note">Official supplement facts label from manufacturer</div>
+    </div>
+  </div>
+  
   <div class="product-body">
     <div class="content-main">
       <div class="content-section">
