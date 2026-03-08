@@ -975,6 +975,34 @@ nav {
   .search-wrap { margin-left: 0; width: 100%; }
   .search-input { width: 100%; }
 }
+
+  .product-image-box {
+    background: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  .card-img { width: 100%; height: 100%; object-fit: contain; }
+
+
+  .product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .product-img {
+    overflow: hidden;
+  }
+
 </style>
 </head>
 <body>
@@ -1096,7 +1124,7 @@ nav {
 
     <div class="preworkout-card gold" data-pid="gorilla" onclick="navigate('product')" style="animation-delay:0.05s">
       <div class="rank-num top">#1</div>
-      <div class="product-img">GM</div>
+      <div class="product-img"><img src="./images/gorilla.jpg" alt="Gorilla Mode" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Gorilla Mind</div>
         <div class="product-name">Gorilla Mode</div>
@@ -1117,7 +1145,7 @@ nav {
 
     <div class="preworkout-card silver" data-pid="totalwar" onclick="navigate('product-totalwar')" style="animation-delay:0.1s">
       <div class="rank-num top">#2</div>
-      <div class="product-img">RC1</div>
+      <div class="product-img"><img src="./images/totalwar.webp" alt="Total War" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">RedCon1</div>
         <div class="product-name">Total War</div>
@@ -1137,7 +1165,7 @@ nav {
 
     <div class="preworkout-card bronze" data-pid="ghost" onclick="navigate('product-ghost')" style="animation-delay:0.15s">
       <div class="rank-num top">#3</div>
-      <div class="product-img">GHOST</div>
+      <div class="product-img"><img src="./images/ghost.webp" alt="Ghost Legend" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Ghost Lifestyle</div>
         <div class="product-name">Ghost Legend V3</div>
@@ -1157,7 +1185,7 @@ nav {
 
     <div class="preworkout-card" data-pid="c4" onclick="navigate('product-c4')" style="animation-delay:0.2s">
       <div class="rank-num">#4</div>
-      <div class="product-img">C4</div>
+      <div class="product-img"><img src="./images/c4.webp" alt="C4 Ultimate" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Cellucor</div>
         <div class="product-name">C4 Ultimate</div>
@@ -1177,7 +1205,7 @@ nav {
 
     <div class="preworkout-card" data-pid="wokeaf" onclick="navigate('product-wokeaf')" style="animation-delay:0.25s">
       <div class="rank-num">#5</div>
-      <div class="product-img">BU</div>
+      <div class="product-img"><img src="https://www.buckedup.com/cdn-cgi/image/width=800,format=auto,quality=85/public/upload%2Fimg%2Fproducts%2Foptions%2Fvalues%2F784-1024110_WHO_WokeAF_RocketPop_30srv_25.03_00_01.webp" alt="Woke AF" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Bucked Up</div>
         <div class="product-name">Woke AF</div>
@@ -1208,7 +1236,7 @@ nav {
 
     <div class="preworkout-card" data-pid="bulk" onclick="navigate('product-bulk')" style="animation-delay:0.3s">
       <div class="rank-num">#6</div>
-      <div class="product-img">TL</div>
+      <div class="product-img"><img src="https://www.transparentlabs.com/cdn/shop/files/TL-127_BULK_BLK_30_BC_1_5.png?v=1769104751&width=800" alt="BULK Black" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Transparent Labs</div>
         <div class="product-name">BULK Black</div>
@@ -1229,7 +1257,7 @@ nav {
 
     <div class="preworkout-card" data-pid="psychotic" onclick="navigate('product-psychotic')" style="animation-delay:0.35s">
       <div class="rank-num">#7</div>
-      <div class="product-img">IL</div>
+      <div class="product-img"><img src="./images/psychotic.webp" alt="Psychotic" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Insane Labz</div>
         <div class="product-name">Psychotic</div>
@@ -1249,7 +1277,7 @@ nav {
 
     <div class="preworkout-card" data-pid="godzilla" onclick="navigate('product-godzilla')" style="animation-delay:0.4s">
       <div class="rank-num">#8</div>
-      <div class="product-img">RYSE</div>
+      <div class="product-img"><img src="./images/godzilla.webp" alt="Godzilla" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Ryse</div>
         <div class="product-name">Godzilla Pre-Workout</div>
@@ -1269,7 +1297,7 @@ nav {
 
     <div class="preworkout-card" data-pid="bloodguts" onclick="navigate('product-bloodguts')" style="animation-delay:0.45s">
       <div class="rank-num">#9</div>
-      <div class="product-img">DY</div>
+      <div class="product-img"><img src="./images/bloodguts.webp" alt="Blood & Guts" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">DY Nutrition</div>
         <div class="product-name">Blood & Guts</div>
@@ -1289,7 +1317,7 @@ nav {
 
     <div class="preworkout-card" data-pid="bamf" onclick="navigate('product-bamf')" style="animation-delay:0.5s">
       <div class="rank-num">#10</div>
-      <div class="product-img">BU</div>
+      <div class="product-img"><img src="https://www.buckedup.com/cdn-cgi/image/width=800,format=auto,quality=85/public/upload%2Fimg%2Fproducts%2Foptions%2Fvalues%2F3764-WHO-BAMF-BlueRazBerryBeret-30srv-01.webp" alt="BAMF" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Bucked Up</div>
         <div class="product-name">BAMF</div>
@@ -1309,7 +1337,7 @@ nav {
 
     <div class="preworkout-card" data-pid="pulse" onclick="navigate('product-pulse')" style="animation-delay:0.55s">
       <div class="rank-num">#11</div>
-      <div class="product-img">LA</div>
+      <div class="product-img"><img src="./images/pulse.png" alt="Pulse" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Legion Athletics</div>
         <div class="product-name">Pulse</div>
@@ -1329,7 +1357,7 @@ nav {
 
     <div class="preworkout-card" data-pid="tlbulk" onclick="navigate('product-tlbulk')" style="animation-delay:0.6s">
       <div class="rank-num">#12</div>
-      <div class="product-img">TL</div>
+      <div class="product-img"><img src="https://www.transparentlabs.com/cdn/shop/files/TL_Bulk_30S_BR_1_1_1defd9cb-a9d2-4603-9509-7b02cd578d47.png?v=1745871768&width=800" alt="TL BULK" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Transparent Labs</div>
         <div class="product-name">BULK Pre-Workout</div>
@@ -1349,7 +1377,7 @@ nav {
 
     <div class="preworkout-card" data-pid="nutricost" onclick="navigate('product-nutricost')" style="animation-delay:0.65s">
       <div class="rank-num">#13</div>
-      <div class="product-img">NC</div>
+      <div class="product-img"><img src="./images/nutricost.webp" alt="Nutricost Pre-X" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Nutricost</div>
         <div class="product-name">Pre-X</div>
@@ -1369,7 +1397,7 @@ nav {
 
     <div class="preworkout-card" data-pid="goldstandard" onclick="navigate('product-goldstandard')" style="animation-delay:0.7s">
       <div class="rank-num">#14</div>
-      <div class="product-img">ON</div>
+      <div class="product-img"><img src="./images/goldstandard.webp" alt="Gold Standard" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Optimum Nutrition</div>
         <div class="product-name">Gold Standard Pre-Workout</div>
@@ -1389,7 +1417,7 @@ nav {
 
     <div class="preworkout-card" data-pid="podiumfuse" onclick="navigate('product-podiumfuse')" style="animation-delay:0.75s">
       <div class="rank-num">#15</div>
-      <div class="product-img">PN</div>
+      <div class="product-img"><img src="./images/podiumfuse.webp" alt="Podium Fuse" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Podium Nutrition</div>
         <div class="product-name">Fuse</div>
@@ -1409,7 +1437,7 @@ nav {
 
     <div class="preworkout-card" data-pid="hosstility" onclick="navigate('product-hosstility')" style="animation-delay:0.8s">
       <div class="rank-num">#16</div>
-      <div class="product-img">HF</div>
+      <div class="product-img"><img src="https://hosstile.com/cdn/shop/files/FoundationBerry_Front.webp?v=1772652142&width=800" alt="Hosstility Foundation" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Hosstility</div>
         <div class="product-name">Foundation</div>
@@ -1429,7 +1457,7 @@ nav {
 
     <div class="preworkout-card" data-pid="htlt30" onclick="navigate('product-htlt30')" style="animation-delay:0.85s">
       <div class="rank-num">#17</div>
-      <div class="product-img">HTLT</div>
+      <div class="product-img"><img src="https://www.htltsupps.com/cdn/shop/products/G02MAX-Center_2_400x.png?v=1764330833" alt="HTLT Pre 3.0" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">HTLT</div>
         <div class="product-name">Pre-Workout 3.0</div>
@@ -1449,7 +1477,7 @@ nav {
 
     <div class="preworkout-card" data-pid="htlthardcore" onclick="navigate('product-htlthardcore')" style="animation-delay:0.9s">
       <div class="rank-num">#18</div>
-      <div class="product-img">HTLT</div>
+      <div class="product-img"><img src="https://www.htltsupps.com/cdn/shop/files/HardcoreStim2.0-TropicalFruitPunch-Center.png" alt="HTLT Hardcore" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">HTLT</div>
         <div class="product-name">Hardcore Stim 2.0</div>
@@ -1469,7 +1497,7 @@ nav {
 
     <div class="preworkout-card" data-pid="feralprimal" onclick="navigate('product-feralprimal')" style="animation-delay:0.95s">
       <div class="rank-num">#19</div>
-      <div class="product-img">FS</div>
+      <div class="product-img"><img src="https://feralsupplements.com/cdn/shop/files/FERALSPORT_WATERMELONFRONT.png?v=1769446866&width=800" alt="Feral Primal" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Feral Sport</div>
         <div class="product-name">Primal</div>
@@ -1489,7 +1517,7 @@ nav {
 
     <div class="preworkout-card" data-pid="thavage" onclick="navigate('product-thavage')" style="animation-delay:1.0s">
       <div class="rank-num">#20</div>
-      <div class="product-img">RN</div>
+      <div class="product-img"><img src="./images/thavage.webp" alt="Thavage" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Raw Nutrition</div>
         <div class="product-name">Thavage</div>
@@ -1509,7 +1537,7 @@ nav {
 
     <div class="preworkout-card" data-pid="preextreme" onclick="navigate('product-preextreme')" style="animation-delay:1.05s">
       <div class="rank-num">#21</div>
-      <div class="product-img">RN</div>
+      <div class="product-img"><img src="./images/preextreme.webp" alt="Pre Extreme" loading="lazy"></div>
       <div class="product-info">
         <div class="product-brand">Raw Nutrition</div>
         <div class="product-name">Pre Extreme</div>
@@ -1545,7 +1573,7 @@ nav {
   </div>
 
   <div class="product-hero">
-    <div class="product-image-box">⚡</div>
+    <div class="product-image-box"><img src="./images/gorilla.jpg" alt="Gorilla Mode pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top">
         <span class="rank-badge">#1 Ranked</span>
@@ -1886,7 +1914,7 @@ nav {
   <div class="back-btn-wrap"><button class="back-btn" onclick="navigate('home')">← Back to Rankings</button></div>
   <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span class="bc-sep">›</span><a onclick="navigate('home')">Rankings</a><span class="bc-sep">›</span><span style="color:var(--text)">Podium Fuse</span></div>
   <div class="product-hero">
-    <div class="product-image-box">⚡</div>
+    <div class="product-image-box"><img src="./images/podiumfuse.webp" alt="podiumfuse pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#15 Ranked</span><span class="brand-label">Podium Nutrition</span></div>
       <h1 class="product-title">Fuse</h1>
@@ -1905,8 +1933,8 @@ nav {
       <div class="quick-facts">
         <div class="fact"><div class="fact-label">Caffeine</div><div class="fact-value">200mg</div></div>
         <div class="fact"><div class="fact-label">Servings</div><div class="fact-value">25</div></div>
-        <div class="fact"><div class="fact-label">Stim Level</div><div class="fact-value">Moderate</div></div>
-        <div class="fact"><div class="fact-label">Best For</div><div class="fact-value">Cognitive Performance</div></div>
+        <div class="fact"><div class="fact-label">Price / Serving</div><div class="fact-value">~$1.40</div></div>
+        <div class="fact"><div class="fact-label">Prop. Blend</div><div class="fact-value" style="color:#4cff8a">None ✓</div></div>
       </div>
     </div>
   </div>
@@ -2080,7 +2108,7 @@ nav {
   <div class="back-btn-wrap"><button class="back-btn" onclick="navigate('home')">← Back to Rankings</button></div>
   <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span class="bc-sep">›</span><a onclick="navigate('home')">Rankings</a><span class="bc-sep">›</span><span style="color:var(--text)">Hosstility Foundation</span></div>
   <div class="product-hero">
-    <div class="product-image-box">🛡️</div>
+    <div class="product-image-box"><img src="https://hosstile.com/cdn/shop/files/FoundationBerry_Front.webp?v=1772652142&width=800" alt="hosstility pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#16 Ranked</span><span class="brand-label">Hosstility</span></div>
       <h1 class="product-title">Foundation</h1>
@@ -2097,10 +2125,10 @@ nav {
         <button class="btn-ghost" onclick="navigate('compare')">+ Compare</button>
       </div>
       <div class="quick-facts">
-        <div class="fact"><div class="fact-label">Caffeine</div><div class="fact-value">150-300mg</div></div>
-        <div class="fact"><div class="fact-label">Servings</div><div class="fact-value">15-30</div></div>
-        <div class="fact"><div class="fact-label">Stim Level</div><div class="fact-value">Low-Moderate</div></div>
-        <div class="fact"><div class="fact-label">Best For</div><div class="fact-value">Daily Use</div></div>
+        <div class="fact"><div class="fact-label">Caffeine</div><div class="fact-value">150mg</div></div>
+        <div class="fact"><div class="fact-label">Servings</div><div class="fact-value">30</div></div>
+        <div class="fact"><div class="fact-label">Price / Serving</div><div class="fact-value">~$1.20</div></div>
+        <div class="fact"><div class="fact-label">Prop. Blend</div><div class="fact-value" style="color:#4cff8a">None ✓</div></div>
       </div>
     </div>
   </div>
@@ -2231,7 +2259,7 @@ nav {
   <div class="back-btn-wrap"><button class="back-btn" onclick="navigate('home')">← Back to Rankings</button></div>
   <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span class="bc-sep">›</span><a onclick="navigate('home')">Rankings</a><span class="bc-sep">›</span><span style="color:var(--text)">HTLT Pre-Workout 3.0</span></div>
   <div class="product-hero">
-    <div class="product-image-box">🔬</div>
+    <div class="product-image-box"><img src="https://www.htltsupps.com/cdn/shop/products/G02MAX-Center_2_400x.png?v=1764330833" alt="htlt30 pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#17 Ranked</span><span class="brand-label">HTLT</span></div>
       <h1 class="product-title">Pre-Workout 3.0</h1>
@@ -2250,8 +2278,8 @@ nav {
       <div class="quick-facts">
         <div class="fact"><div class="fact-label">Caffeine</div><div class="fact-value">100-300mg</div></div>
         <div class="fact"><div class="fact-label">Servings</div><div class="fact-value">40</div></div>
-        <div class="fact"><div class="fact-label">Stim Level</div><div class="fact-value">Flexible</div></div>
-        <div class="fact"><div class="fact-label">Best For</div><div class="fact-value">Customizable Dosing</div></div>
+        <div class="fact"><div class="fact-label">Price / Serving</div><div class="fact-value">~$1.35</div></div>
+        <div class="fact"><div class="fact-label">Prop. Blend</div><div class="fact-value" style="color:#4cff8a">None ✓</div></div>
       </div>
     </div>
   </div>
@@ -2420,7 +2448,7 @@ nav {
   <div class="back-btn-wrap"><button class="back-btn" onclick="navigate('home')">← Back to Rankings</button></div>
   <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span class="bc-sep">›</span><a onclick="navigate('home')">Rankings</a><span class="bc-sep">›</span><span style="color:var(--text)">HTLT Hardcore Stim 2.0</span></div>
   <div class="product-hero">
-    <div class="product-image-box">💀</div>
+    <div class="product-image-box"><img src="https://www.htltsupps.com/cdn/shop/files/HardcoreStim2.0-TropicalFruitPunch-Center.png" alt="htlthardcore pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#18 Ranked</span><span class="brand-label">HTLT</span></div>
       <h1 class="product-title">Hardcore Stim 2.0</h1>
@@ -2439,8 +2467,8 @@ nav {
       <div class="quick-facts">
         <div class="fact"><div class="fact-label">Caffeine</div><div class="fact-value">100-300mg</div></div>
         <div class="fact"><div class="fact-label">Servings</div><div class="fact-value">40</div></div>
-        <div class="fact"><div class="fact-label">Stim Level</div><div class="fact-value">Very High</div></div>
-        <div class="fact"><div class="fact-label">Best For</div><div class="fact-value">Extreme Focus</div></div>
+        <div class="fact"><div class="fact-label">Price / Serving</div><div class="fact-value">~$1.45</div></div>
+        <div class="fact"><div class="fact-label">Prop. Blend</div><div class="fact-value" style="color:#4cff8a">None ✓</div></div>
       </div>
     </div>
   </div>
@@ -2588,7 +2616,7 @@ nav {
   <div class="back-btn-wrap"><button class="back-btn" onclick="navigate('home')">← Back to Rankings</button></div>
   <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span class="bc-sep">›</span><a onclick="navigate('home')">Rankings</a><span class="bc-sep">›</span><span style="color:var(--text)">Feral Sport Primal</span></div>
   <div class="product-hero">
-    <div class="product-image-box">🐺</div>
+    <div class="product-image-box"><img src="https://feralsupplements.com/cdn/shop/files/FERALSPORT_WATERMELONFRONT.png?v=1769446866&width=800" alt="feralprimal pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#19 Ranked</span><span class="brand-label">Feral Sport</span></div>
       <h1 class="product-title">Primal</h1>
@@ -2607,8 +2635,8 @@ nav {
       <div class="quick-facts">
         <div class="fact"><div class="fact-label">Caffeine</div><div class="fact-value">150mg</div></div>
         <div class="fact"><div class="fact-label">Servings</div><div class="fact-value">30</div></div>
-        <div class="fact"><div class="fact-label">Stim Level</div><div class="fact-value">Moderate</div></div>
-        <div class="fact"><div class="fact-label">Best For</div><div class="fact-value">Clean Performance</div></div>
+        <div class="fact"><div class="fact-label">Price / Serving</div><div class="fact-value">~$1.30</div></div>
+        <div class="fact"><div class="fact-label">Prop. Blend</div><div class="fact-value" style="color:#4cff8a">None ✓</div></div>
       </div>
     </div>
   </div>
@@ -2763,7 +2791,7 @@ nav {
   <div class="back-btn-wrap"><button class="back-btn" onclick="navigate('home')">← Back to Rankings</button></div>
   <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span class="bc-sep">›</span><a onclick="navigate('home')">Rankings</a><span class="bc-sep">›</span><span style="color:var(--text)">Thavage</span></div>
   <div class="product-hero">
-    <div class="product-image-box">⚔️</div>
+    <div class="product-image-box"><img src="./images/thavage.webp" alt="thavage pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#20 Ranked</span><span class="brand-label">Raw Nutrition</span></div>
       <h1 class="product-title">Thavage</h1>
@@ -2780,10 +2808,10 @@ nav {
         <button class="btn-ghost" onclick="navigate('compare')">+ Compare</button>
       </div>
       <div class="quick-facts">
-        <div class="fact"><div class="fact-label">Caffeine</div><div class="fact-value">130-260mg</div></div>
+        <div class="fact"><div class="fact-label">Caffeine</div><div class="fact-value">130mg</div></div>
         <div class="fact"><div class="fact-label">Servings</div><div class="fact-value">40</div></div>
-        <div class="fact"><div class="fact-label">Stim Level</div><div class="fact-value">Moderate-High</div></div>
-        <div class="fact"><div class="fact-label">Best For</div><div class="fact-value">Premium Nootropics</div></div>
+        <div class="fact"><div class="fact-label">Price / Serving</div><div class="fact-value">~$1.50</div></div>
+        <div class="fact"><div class="fact-label">Prop. Blend</div><div class="fact-value" style="color:#4cff8a">None ✓</div></div>
       </div>
     </div>
   </div>
@@ -2944,7 +2972,7 @@ nav {
   <div class="back-btn-wrap"><button class="back-btn" onclick="navigate('home')">← Back to Rankings</button></div>
   <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span class="bc-sep">›</span><a onclick="navigate('home')">Rankings</a><span class="bc-sep">›</span><span style="color:var(--text)">Pre Extreme</span></div>
   <div class="product-hero">
-    <div class="product-image-box">🔥</div>
+    <div class="product-image-box"><img src="./images/preextreme.webp" alt="preextreme pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#21 Ranked</span><span class="brand-label">Raw Nutrition</span></div>
       <h1 class="product-title">Pre Extreme</h1>
@@ -2963,8 +2991,8 @@ nav {
       <div class="quick-facts">
         <div class="fact"><div class="fact-label">Caffeine</div><div class="fact-value">400mg</div></div>
         <div class="fact"><div class="fact-label">Servings</div><div class="fact-value">30</div></div>
-        <div class="fact"><div class="fact-label">Stim Level</div><div class="fact-value">Very High</div></div>
-        <div class="fact"><div class="fact-label">Best For</div><div class="fact-value">Maximum Caffeine</div></div>
+        <div class="fact"><div class="fact-label">Price / Serving</div><div class="fact-value">~$1.25</div></div>
+        <div class="fact"><div class="fact-label">Prop. Blend</div><div class="fact-value" style="color:#4cff8a">None ✓</div></div>
       </div>
     </div>
   </div>
@@ -3343,7 +3371,7 @@ nav {
     <span style="color:var(--text)">Psychotic</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">🧠</div>
+    <div class="product-image-box"><img src="./images/psychotic.webp" alt="psychotic pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#7 Ranked</span><span class="brand-label">Insane Labz</span></div>
       <h1 class="product-title">Psychotic</h1>
@@ -3490,7 +3518,7 @@ nav {
     <span style="color:var(--text)">Ryse Godzilla</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">🦎</div>
+    <div class="product-image-box"><img src="./images/godzilla.webp" alt="godzilla pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#8 Ranked</span><span class="brand-label">Ryse</span></div>
       <h1 class="product-title">Godzilla Pre-Workout</h1>
@@ -3673,7 +3701,7 @@ nav {
     <span style="color:var(--text)">Blood & Guts</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">💀</div>
+    <div class="product-image-box"><img src="./images/bloodguts.webp" alt="bloodguts pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#9 Ranked</span><span class="brand-label">DY Nutrition</span></div>
       <h1 class="product-title">Blood & Guts</h1>
@@ -3835,7 +3863,7 @@ nav {
     <div class="content-main">
       <div class="content-section">
         <h2 class="section-heading"><span>📋</span> Our Verdict</h2>
-        <div class="verdict-box"><strong>Blood & Guts is a no-nonsense, moderately-dosed pre-workout.</strong> At 200mg caffeine it's approachable for most users without the anxiety spike of higher-stim products. The citrulline malate and tyrosine combo gives decent pump and focus. It won't blow your mind but it's a reliable, well-rounded formula backed by Dorian Yates' training philosophy. Good choice for those who train hard but want to stay clear of extreme stimulants.</div>
+        <div class="verdict-box"><strong>Blood & Guts is a no-nonsense, moderately-dosed pre-workout.</strong> At 372mg total caffeine (350mg anhydrous + additional from green tea and guarana) this is a high-stim formula. The citrulline malate and tyrosine combo gives decent pump and focus. It won't blow your mind but it's a reliable, well-rounded formula backed by Dorian Yates' training philosophy. For experienced caffeine users who want intensity with full label transparency.</div>
         <div class="pros-cons">
           <div class="pros"><div class="pros-title">What we like</div><ul><li>Approachable 200mg caffeine dose</li><li>Full label transparency</li><li>Good pump from Citrulline Malate</li><li>Dorian Yates credibility</li></ul></div>
           <div class="cons"><div class="cons-title">Watch out for</div><ul><li>Weaker energy than top-tier products</li><li>Citrulline Malate less efficient than pure L-Citrulline</li><li>Limited focus stack</li></ul></div>
@@ -3869,7 +3897,7 @@ nav {
     <span style="color:var(--text)">BAMF</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">🪖</div>
+    <div class="product-image-box"><img src="https://www.buckedup.com/cdn-cgi/image/width=800,format=auto,quality=85/public/upload%2Fimg%2Fproducts%2Foptions%2Fvalues%2F3764-WHO-BAMF-BlueRazBerryBeret-30srv-01.webp" alt="bamf pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#10 Ranked</span><span class="brand-label">Bucked Up</span></div>
       <h1 class="product-title">BAMF</h1>
@@ -4034,7 +4062,7 @@ nav {
     <span style="color:var(--text)">Legion Pulse</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">⚡</div>
+    <div class="product-image-box"><img src="./images/pulse.png" alt="pulse pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#11 Ranked</span><span class="brand-label">Legion Athletics</span></div>
       <h1 class="product-title">Pulse</h1>
@@ -4163,7 +4191,7 @@ nav {
         <h2 class="section-heading"><span>📋</span> Our Verdict</h2>
         <div class="verdict-box"><strong>Pulse is one of the most scientifically honest pre-workouts on the market.</strong> Legion only uses ingredients with clinical research behind them and always at effective doses. The downside is the price — at only 20 servings per tub it's expensive per scoop. The focus stack is also relatively light compared to Gorilla Mode. But if you value transparency and evidence above all else, Pulse is a premium choice.</div>
         <div class="pros-cons">
-          <div class="pros"><div class="pros-title">What we like</div><ul><li>100% science-backed formula</div><li>Full label transparency</li><li>Strong energy & pump combo</li><li>L-Theanine smooths the caffeine</li></ul></div>
+          <div class="pros"><div class="pros-title">What we like</div><ul><li>100% science-backed formula</li><li>Full label transparency</li><li>Strong energy & pump combo</li><li>L-Theanine smooths the caffeine</li></ul></div>
           <div class="cons"><div class="cons-title">Watch out for</div><ul><li>Only 20 servings per tub</li><li>High price per serving</li><li>Light focus stack</li></ul></div>
         </div>
       </div>
@@ -4195,7 +4223,7 @@ nav {
     <span style="color:var(--text)">TL BULK Pre-Workout</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">🧪</div>
+    <div class="product-image-box"><img src="https://www.transparentlabs.com/cdn/shop/files/TL_Bulk_30S_BR_1_1_1defd9cb-a9d2-4603-9509-7b02cd578d47.png?v=1745871768&width=800" alt="tlbulk pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#12 Ranked</span><span class="brand-label">Transparent Labs</span></div>
       <h1 class="product-title">BULK Pre-Workout</h1>
@@ -4404,7 +4432,7 @@ nav {
     <span style="color:var(--text)">Nutricost Pre-X</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">💊</div>
+    <div class="product-image-box"><img src="./images/nutricost.webp" alt="nutricost pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#13 Ranked</span><span class="brand-label">Nutricost</span></div>
       <h1 class="product-title">Pre-X</h1>
@@ -4573,10 +4601,10 @@ nav {
     <div class="content-main">
       <div class="content-section">
         <h2 class="section-heading"><span>📋</span> Our Verdict</h2>
-        <div class="verdict-box"><strong>Pre-X is hard to beat on price.</strong> At around $0.60 per serving it's one of the most affordable pre-workouts with a legible, honest label. The 150mg caffeine is mild — good for beginners or as an afternoon workout supplement where you don't want to disrupt sleep. The scores across energy, pump, and focus reflect a formula that plays it safe rather than pushing limits. If budget is your priority, Pre-X is the pick.</div>
+        <div class="verdict-box"><strong>Pre-X is hard to beat on price.</strong> At around $0.60 per serving it's one of the most affordable pre-workouts with a legible, honest label. The 300mg caffeine is solid for most users — effective energy without crossing into extreme territory. The scores across energy, pump, and focus reflect a formula that plays it safe rather than pushing limits. If budget is your priority, Pre-X is the pick.</div>
         <div class="pros-cons">
           <div class="pros"><div class="pros-title">What we like</div><ul><li>Extremely affordable at ~$0.60/serving</li><li>Clean, transparent label</li><li>Low-stim — good for beginners</li><li>Reliable everyday option</li></ul></div>
-          <div class="cons"><div class="cons-title">Watch out for</div><ul><li>Mild energy — not for high-stim users</li><li>Pump ingredients underdosed</li><li>No focus stack to speak of</li></ul></div>
+          <div class="cons"><div class="cons-title">Watch out for</div><ul><li>Solid 300mg caffeine for most users</li><li>Pump ingredients underdosed</li><li>No focus stack to speak of</li></ul></div>
         </div>
       </div>
       <div class="content-section">
@@ -4607,7 +4635,7 @@ nav {
     <span style="color:var(--text)">Gold Standard Pre-Workout</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">🥇</div>
+    <div class="product-image-box"><img src="./images/goldstandard.webp" alt="goldstandard pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#14 Ranked</span><span class="brand-label">Optimum Nutrition</span></div>
       <h1 class="product-title">Gold Standard Pre-Workout</h1>
@@ -4833,7 +4861,7 @@ nav {
     <span style="color:var(--text)">Total War</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">🦁</div>
+    <div class="product-image-box"><img src="./images/totalwar.webp" alt="totalwar pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#2 Ranked</span><span class="brand-label">RedCon1</span></div>
       <h1 class="product-title">Total War</h1>
@@ -4994,7 +5022,7 @@ nav {
     <span style="color:var(--text)">Ghost Legend V3</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">👻</div>
+    <div class="product-image-box"><img src="./images/ghost.webp" alt="ghost pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#3 Ranked</span><span class="brand-label">Ghost Lifestyle</span></div>
       <h1 class="product-title">Ghost Legend V3</h1>
@@ -5203,7 +5231,7 @@ nav {
     <span style="color:var(--text)">C4 Ultimate</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">💊</div>
+    <div class="product-image-box"><img src="./images/c4.webp" alt="c4 pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#4 Ranked</span><span class="brand-label">Cellucor</span></div>
       <h1 class="product-title">C4 Ultimate</h1>
@@ -5458,7 +5486,7 @@ nav {
     <span style="color:var(--text)">Woke AF</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">🔥</div>
+    <div class="product-image-box"><img src="https://www.buckedup.com/cdn-cgi/image/width=800,format=auto,quality=85/public/upload%2Fimg%2Fproducts%2Foptions%2Fvalues%2F784-1024110_WHO_WokeAF_RocketPop_30srv_25.03_00_01.webp" alt="wokeaf pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#5 Ranked</span><span class="brand-label">Bucked Up</span></div>
       <h1 class="product-title">Woke AF</h1>
@@ -5619,7 +5647,7 @@ nav {
     <span style="color:var(--text)">BULK Black</span>
   </div>
   <div class="product-hero">
-    <div class="product-image-box">⚗️</div>
+    <div class="product-image-box"><img src="https://www.transparentlabs.com/cdn/shop/files/TL-127_BULK_BLK_30_BC_1_5.png?v=1769104751&width=800" alt="bulk pre-workout" class="product-img" loading="lazy"></div>
     <div class="product-meta">
       <div class="meta-top"><span class="rank-badge">#6 Ranked</span><span class="brand-label">Transparent Labs</span></div>
       <h1 class="product-title">BULK Black</h1>
@@ -6605,8 +6633,24 @@ function renderWhereToBuy(productId, container) {
   const stores = product.stores || generateDefaultStores(product);
   const history = product.priceHistory || generateDefaultHistory(product);
 
-  // Find best price
+  // Find best price & best store
   const bestPrice = Math.min(...stores.map(s => s.price));
+  const bestStore = stores.find(s => s.price === bestPrice);
+
+  // Update the top "Buy Now" button to link to cheapest store with live price
+  const pageEl = container.closest && (container.closest('[id^="page-product"]') || container.closest('.page'));
+  if (pageEl && bestStore && bestStore.url && bestStore.url !== '#') {
+    const buyBtn = pageEl.querySelector('.cta-row .btn-primary');
+    if (buyBtn) {
+      const pricePerServing = (bestPrice / product.servings).toFixed(2);
+      const newBtn = document.createElement('a');
+      newBtn.href = bestStore.url;
+      newBtn.target = '_blank';
+      newBtn.className = 'btn-primary';
+      newBtn.innerHTML = 'Buy Now — $' + pricePerServing + '/serving ↗';
+      buyBtn.replaceWith(newBtn);
+    }
+  }
 
   const storesHTML = stores.map(store => {
     const isBest = store.price === bestPrice;
