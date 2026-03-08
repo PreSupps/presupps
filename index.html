@@ -3762,60 +3762,89 @@ async function loadPriceData() {
       const values = row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g) || [];
       const cleanValues = values.map(v => v.replace(/^"|"$/g, '').trim());
       
-      const [productId, productName, amazonPrice, amazonLink, bbPrice, bbLink, officialPrice, officialLink, lastUpdated] = cleanValues;
+      // New flexible column structure:
+      // Product ID | Product Name | Store 1 Name | Store 1 Price | Store 1 Link | Store 2 Name | Store 2 Price | Store 2 Link | Store 3 Name | Store 3 Price | Store 3 Link | Last Updated
+      const [productId, productName, 
+             store1Name, store1Price, store1Link,
+             store2Name, store2Price, store2Link,
+             store3Name, store3Price, store3Link,
+             lastUpdated] = cleanValues;
       
       if (!productId || !PRODUCTS[productId]) return;
+      
+      // Helper function to create store object
+      const createStore = (name, price, link) => {
+        if (!name || !price) return null;
+        
+        const priceNum = parseFloat(price) || 0;
+        if (priceNum === 0) return null;
+        
+        // Determine logo and shipping based on store name
+        let logo = name.substring(0, 2).toUpperCase();
+        let shipping = 'Standard shipping';
+        let isOfficial = false;
+        
+        const nameLower = name.toLowerCase();
+        if (nameLower.includes('amazon')) {
+          logo = 'AM';
+          shipping = '⚡ Prime shipping';
+        } else if (nameLower.includes('bodybuilding') || nameLower.includes('bb.com')) {
+          logo = 'BB';
+          shipping = 'Free shipping over $49';
+        } else if (nameLower.includes('iherb')) {
+          logo = 'iH';
+          shipping = 'Free shipping over $20';
+        } else if (nameLower.includes('official') || nameLower.includes('direct')) {
+          const product = PRODUCTS[productId];
+          logo = product.logo;
+          shipping = 'Direct from manufacturer';
+          isOfficial = true;
+        } else if (nameLower.includes('supplement')) {
+          logo = 'SH';
+          shipping = 'Check site for shipping';
+        }
+        
+        return {
+          name: name,
+          logo: logo,
+          price: priceNum,
+          shipping: shipping,
+          url: link || '#',
+          isOfficial: isOfficial,
+          isBest: false
+        };
+      };
       
       // Update product with Google Sheets data
       const product = PRODUCTS[productId];
       product.stores = [
-        {
-          name: 'Amazon',
-          logo: 'AM',
-          price: parseFloat(amazonPrice) || 0,
-          shipping: '⚡ Prime shipping',
-          url: amazonLink || 'https://amazon.com',
-          isBest: false
-        },
-        {
-          name: 'Bodybuilding.com',
-          logo: 'BB',
-          price: parseFloat(bbPrice) || 0,
-          shipping: 'Free shipping over $49',
-          url: bbLink || 'https://bodybuilding.com',
-          isBest: false
-        },
-        {
-          name: `${product.brand} (Official)`,
-          logo: product.logo,
-          price: parseFloat(officialPrice) || 0,
-          shipping: 'Direct from manufacturer',
-          url: officialLink || '#',
-          isOfficial: true,
-          isBest: false
-        }
-      ];
+        createStore(store1Name, store1Price, store1Link),
+        createStore(store2Name, store2Price, store2Link),
+        createStore(store3Name, store3Price, store3Link)
+      ].filter(store => store !== null); // Remove null stores
       
       // Store last updated date
       product.lastUpdated = lastUpdated || new Date().toISOString().split('T')[0];
       
       // Mark cheapest as best
-      const minPrice = Math.min(...product.stores.map(s => s.price).filter(p => p > 0));
-      product.stores.forEach(store => {
-        if (store.price === minPrice && store.price > 0) {
-          store.isBest = true;
+      if (product.stores.length > 0) {
+        const minPrice = Math.min(...product.stores.map(s => s.price).filter(p => p > 0));
+        product.stores.forEach(store => {
+          if (store.price === minPrice && store.price > 0) {
+            store.isBest = true;
+          }
+        });
+        
+        // Update price history
+        if (!product.priceHistory) {
+          const avgPrice = product.stores.reduce((sum, s) => sum + s.price, 0) / product.stores.length;
+          product.priceHistory = {
+            low: minPrice * 0.85,
+            avg: avgPrice,
+            high: minPrice * 1.15,
+            current: minPrice
+          };
         }
-      });
-      
-      // Update price history
-      if (!product.priceHistory) {
-        const avgPrice = product.stores.reduce((sum, s) => sum + s.price, 0) / product.stores.length;
-        product.priceHistory = {
-          low: minPrice * 0.85,
-          avg: avgPrice,
-          high: minPrice * 1.15,
-          current: minPrice
-        };
       }
     });
     
