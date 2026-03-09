@@ -1094,7 +1094,7 @@ nav {
       <p>No sponsored opinions. Just data-driven rankings and a full breakdown of every ingredient — so you know exactly what you're putting in your body.</p>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">21</div><div class="stat-label">Products Ranked</div></div>
+      <div class="stat"><div class="stat-num">22</div><div class="stat-label">Products Ranked</div></div>
       <div class="stat"><div class="stat-num">19</div><div class="stat-label">Ingredients Explained</div></div>
       <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Unsponsored</div></div>
     </div>
@@ -1122,7 +1122,7 @@ nav {
     <div class="section-header">
       <span class="section-title">Top Ranked Pre-Workouts 2025</span>
       <div class="section-line"></div>
-      <span class="section-title">21 Products</span>
+      <span class="section-title">22 Products</span>
     </div>
 
     <div class="preworkout-card gold" data-pid="gorilla" onclick="navigate('product')" style="animation-delay:0.05s">
@@ -1556,6 +1556,27 @@ nav {
         <div class="score-bar-row"><span class="score-bar-label">Focus</span><div class="score-bar-track"><div class="score-bar-fill focus" style="width:60%"></div></div></div>
       </div>
       <div class="product-score"><div class="score-num">7.0</div><div class="score-label">Overall</div></div>
+    </div>
+
+    
+    <div class="preworkout-card" data-pid="evogen" onclick="navigate('product-evogen')" style="animation-delay:1.1s">
+      <div class="rank-num">#22</div>
+      <div class="product-img"><img src="./evogen.webp" alt="Evogen EVP-3D" loading="lazy"></div>
+      <div class="product-info">
+        <div class="product-brand">Evogen Nutrition</div>
+        <div class="product-name">EVP-3D</div>
+        <div class="product-tags">
+          <span class="ptag caffeine">200mg Caffeine</span>
+          <span class="ptag pump">Citrulline</span>
+          <span class="ptag beta">Beta-Alanine</span>
+        </div>
+      </div>
+      <div class="score-bars">
+        <div class="score-bar-row"><span class="score-bar-label">Energy</span><div class="score-bar-track"><div class="score-bar-fill" style="width:72%"></div></div></div>
+        <div class="score-bar-row"><span class="score-bar-label">Pump</span><div class="score-bar-track"><div class="score-bar-fill pump" style="width:78%"></div></div></div>
+        <div class="score-bar-row"><span class="score-bar-label">Focus</span><div class="score-bar-track"><div class="score-bar-fill focus" style="width:65%"></div></div></div>
+      </div>
+      <div class="product-score"><div class="score-num">7.2</div><div class="score-label">Overall</div></div>
     </div>
 
     <p class="affiliate-note">Products are labeled <em>*affiliated</em> or <em>*not affiliated</em> so you always know our relationship with a brand. Rankings are never influenced either way. <a onclick="navigate('home')">Learn how we score →</a></p>
@@ -8323,6 +8344,20 @@ const PRODUCTS = {
     ingredients:['Beta-Alanine','L-Citrulline Malate','L-Tyrosine','Agmatine Sulfate','Betaine Anhydrous','Caffeine Anhydrous','Niacin'],
     label:{serving:'1 Scoop (14.8g)',per:'30',rows:[['Niacin (Vitamin B3)','20mg'], ['Beta-Alanine','3,500mg'], ['L-Citrulline Malate (1:1)','2,500mg'], ['L-Tyrosine','1,500mg'], ['Agmatine Sulfate','1,500mg'], ['Betaine Anhydrous','1,000mg'], ['Caffeine Anhydrous','400mg']]}
   }
+
+  evogen: {
+    id:'evogen', img:'./evogen.webp', emoji:'💪', brand:'Evogen Nutrition', name:'EVP-3D', logo:'EV',
+    rank:22, overall:7.2, energy:7.2, pump:7.8, focus:6.5, value:7.5,
+    caffeine:'200mg', servings:40, priceServing:'$1.30', propBlend:false,
+    stimLevel:'Moderate', bestFor:'Pump',
+    tags:['Pump','High Stim'],
+    ingredients:['Citrulline','Caffeine Anhydrous','Beta-Alanine','GlycerPump','Betaine Anhydrous'],
+    label:{serving:'1 Scoop (15g)',per:'40',rows:[['Calories','10'], ['Sodium','100mg'], ['Citrulline','4,000mg'], ['GlycerPump (65% Glycerol)','2,000mg'], ['Beta-Alanine','1,600mg'], ['Betaine Anhydrous','1,500mg'], ['Caffeine Anhydrous','200mg'], ['L-Theanine','100mg'], ['AstraGin','25mg']]},
+    stores:[
+      {name:'Amazon', logo:'AM', price:54.99, shipping:'Prime shipping', url:'https://amazon.com/dp/evogen'},
+      {name:'Evogen (Official)', logo:'EV', price:54.99, shipping:'Free shipping over $75', url:'https://evogennutrition.com'}
+    ]
+  },
 };
 
 // Ingredient → scroll ID map
