@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PreSupps.com — Every Pre-Workout Ranked & Explained</title>
@@ -9520,8 +9520,6 @@ function renderCompareTable(prods) {
     + textRow('Servings', prods.map(p=>p.servings))
     + textRow('Price / Serving', prods.map(p=>p.priceServing))
     + textRow('Best For', prods.map(p=>p.bestFor))
-    + sectionHead('Key Ingredients')
-    + ingRow('Top Ingredients', prods)
     + sectionHead('📋 Supplement Facts — Side by Side')
     + buildLabelComparison(prods)
     + `</div>`;
@@ -9567,7 +9565,7 @@ function injectLabelPanels(prods) {
           <div class="sf-clone-name">${p.name}</div>
         </div>
       </div>
-      <button class="c-buy" style="font-size:9px;padding:5px 8px;flex-shrink:0;white-space:nowrap;margin-left:8px" onclick="navigate('${reviewTarget}')">Review →</button>`;
+      <button style="font-size:9px;padding:5px 8px;flex-shrink:0;white-space:nowrap;margin-left:8px;background:var(--accent);color:#000;border:none;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;cursor:pointer" onclick="navigate('${reviewTarget}')">Review →</button>`;
     slot.appendChild(header);
     slot.appendChild(clone);
   });
