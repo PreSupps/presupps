@@ -293,7 +293,7 @@ nav {
 }
 .rank-num.top { color: var(--accent); }
 .product-img {
-  width: 64px; height: 64px; background: var(--surface2); border-radius: 8px;
+  width: 64px; height: 64px; background: #111111; border-radius: 8px; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0; border: 1px solid var(--border);
   font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
@@ -366,9 +366,16 @@ nav {
   display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: start;
 }
 .product-image-box {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  background: #111111; border: 1px solid var(--border); border-radius: 16px;
   aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
   font-size: 140px; position: sticky; top: 80px;
+  overflow: hidden;
+}
+.product-image-box img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  display: block;
 }
 .meta-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
 .rank-badge {
@@ -1000,7 +1007,8 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 8px;
+    padding: 4px;
+    border-radius: 0px;
   }
   .product-img {
     overflow: hidden;
