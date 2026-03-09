@@ -1010,7 +1010,7 @@ nav {
 
   /* Compare page */
   #page-compare > div { padding: 16px 16px 60px; }
-  .compare-selected-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .compare-selected-grid { grid-template-columns: 1fr 1fr; gap: 8px; min-height: 90px; }
   .compare-header-card { padding: 12px 8px; }
   .compare-header-card .c-img { width: 60px; height: 60px; }
   .compare-header-card .c-img-fallback { font-size: 20px; }
@@ -8100,13 +8100,13 @@ nav {
 
     <!-- SEARCH & ADD INTERFACE -->
     <div style="margin-bottom:32px">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:12px">Search Pre-Workouts</div>
-        <input 
-          type="text" 
-          id="compare-search" 
-          class="compare-search-input" 
-          placeholder="Type to search... (e.g., Gorilla Mode, C4, Ghost)" 
+        <input
+          type="text"
+          id="compare-search"
+          class="compare-search-input"
+          placeholder="Type to search... (e.g., Gorilla Mode, C4, Ghost)"
           oninput="filterCompareResults(this.value)"
           autocomplete="off"
         >
@@ -8156,8 +8156,14 @@ nav {
 .compare-search-input:focus { border-color:var(--accent); }
 
 .compare-search-results {
-  max-height:400px; overflow-y:auto; margin-top:12px;
+  position:absolute; left:0; right:0;
+  top:calc(100% - 8px);
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:0 0 12px 12px;
+  max-height:320px; overflow-y:auto;
+  z-index:200;
   display:none;
+  box-shadow:0 8px 24px rgba(0,0,0,0.4);
 }
 .compare-search-results.active { display:block; }
 
@@ -8329,12 +8335,18 @@ nav {
 .compare-result-info {
   display:flex; align-items:center; gap:12px; flex:1;
 }
-.compare-result-emoji { 
-  font-size:16px; width:44px; height:44px; flex-shrink:0;
+.compare-result-thumb {
+  width:44px; height:44px; flex-shrink:0;
   background:var(--surface2); border:1px solid var(--border);
-  border-radius:8px; display:flex; align-items:center; justify-content:center;
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  letter-spacing:-0.5px;
+  border-radius:8px; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.compare-result-thumb img {
+  width:100%; height:100%; object-fit:contain;
+}
+.compare-result-thumb-fallback {
+  font-size:12px; font-family:'Barlow Condensed',sans-serif; font-weight:900;
+  letter-spacing:-0.5px; color:var(--text);
 }
 .compare-result-text { flex:1; }
 .compare-result-brand {
@@ -8373,11 +8385,19 @@ nav {
 
 .compare-selected-item {
   background:var(--surface); border:1px solid var(--border);
-  border-radius:8px; padding:16px; position:relative;
+  border-radius:8px; padding:12px; position:relative;
 }
-.compare-selected-emoji { 
-  font-size:24px; text-align:center; margin-bottom:8px;
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
+.compare-selected-thumb {
+  width:60px; height:60px; margin:0 auto 8px;
+  background:var(--surface2); border:1px solid var(--border);
+  border-radius:8px; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.compare-selected-thumb img {
+  width:100%; height:100%; object-fit:contain;
+}
+.compare-selected-thumb-fallback {
+  font-size:18px; font-family:'Barlow Condensed',sans-serif; font-weight:900;
   letter-spacing:-0.5px; color:var(--text);
 }
 .compare-selected-brand {
@@ -9288,6 +9308,15 @@ function goIngredient(name) {
 // ============================================================
 let compareSelected = [];
 
+// Close search dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const input = document.getElementById('compare-search');
+  const results = document.getElementById('compare-search-results');
+  if (input && results && !input.contains(e.target) && !results.contains(e.target)) {
+    results.classList.remove('active');
+  }
+});
+
 function filterCompareResults(query) {
   const resultsDiv = document.getElementById('compare-search-results');
   query = query.toLowerCase().trim();
@@ -9319,7 +9348,10 @@ function filterCompareResults(query) {
     return `
       <div class="compare-result-item ${isAdded ? 'added' : ''}" onclick="${disabled ? '' : `addToCompare('${p.id}')`}">
         <div class="compare-result-info">
-          <div class="compare-result-emoji">${p.logo}</div>
+          <div class="compare-result-thumb">
+            <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span class="compare-result-thumb-fallback" style="display:none">${p.logo}</span>
+          </div>
           <div class="compare-result-text">
             <div class="compare-result-brand">${p.brand}</div>
             <div class="compare-result-name">${p.name}</div>
@@ -9374,7 +9406,10 @@ function updateCompareSelected() {
     return `
       <div class="compare-selected-item">
         <button class="compare-remove-btn" onclick="removeFromCompare('${id}')">×</button>
-        <div class="compare-selected-emoji">${p.logo}</div>
+        <div class="compare-selected-thumb">
+          <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="compare-selected-thumb-fallback" style="display:none">${p.logo}</span>
+        </div>
         <div class="compare-selected-brand">${p.brand}</div>
         <div class="compare-selected-name">${p.name}</div>
       </div>
@@ -9464,12 +9499,12 @@ function renderCompareTable(prods) {
       <div class="c-name">${p.name}</div>
       <div class="c-score">${p.overall}</div>
       <div class="c-score-label">Overall Score</div>
-      <button class="c-buy" onclick="navigate('product')">View Full Review →</button>
+      <button class="c-buy" onclick="navigate(${p.id === 'gorilla' ? "'product'" : `'product-${p.id}'`})">View Full Review →</button>
     </div>`).join('');
 
-  const headerGrid = `<div style="display:grid;grid-template-columns:${labelCol} ${prods.map(()=>'1fr').join(' ')};gap:12px;margin-bottom:24px">
-    <div></div>${headerCells}
-  </div>`;
+  const headerGrid = isMobile
+    ? `<div style="display:grid;grid-template-columns:${labelCol} ${prods.map(()=>'1fr').join(' ')};gap:12px;margin-bottom:24px"><div></div>${headerCells}</div>`
+    : `<div style="display:grid;grid-template-columns:${prods.map(()=>'1fr').join(' ')};gap:12px;margin-bottom:24px">${headerCells}</div>`;
 
   const sectionHead = (title) => `<div class="compare-section-head">${title}</div>`;
 
