@@ -7825,7 +7825,7 @@ nav {
       <div class="content-section">
         <h2 class="section-heading"><span>🔬</span> Ingredient Breakdown</h2>
 
-        <div class="ingredient-card">
+        <div class="ingredient-card" onclick="this.classList.toggle('open')">
           <div class="ingredient-header">
             <div class="ingredient-name-row">
               <span class="ingredient-name">Citrulline</span>
@@ -7838,7 +7838,7 @@ nav {
           <a class="ingredient-learn-more" onclick="navigate('ingredient-citrulline')">Learn More About Citrulline →</a>
         </div>
 
-        <div class="ingredient-card">
+        <div class="ingredient-card" onclick="this.classList.toggle('open')">
           <div class="ingredient-header">
             <div class="ingredient-name-row">
               <span class="ingredient-name">GlycerPump (65% Glycerol)</span>
@@ -7850,7 +7850,7 @@ nav {
           <div class="ingredient-effectiveness"><span class="eff-label">Effectiveness</span><span class="eff-stars">★★★★★</span></div>
         </div>
 
-        <div class="ingredient-card">
+        <div class="ingredient-card" onclick="this.classList.toggle('open')">
           <div class="ingredient-header">
             <div class="ingredient-name-row">
               <span class="ingredient-name">Beta-Alanine</span>
@@ -7863,7 +7863,7 @@ nav {
           <a class="ingredient-learn-more" onclick="navigate('ingredient-beta-alanine')">Learn More About Beta-Alanine →</a>
         </div>
 
-        <div class="ingredient-card">
+        <div class="ingredient-card" onclick="this.classList.toggle('open')">
           <div class="ingredient-header">
             <div class="ingredient-name-row">
               <span class="ingredient-name">Betaine Anhydrous</span>
@@ -7875,7 +7875,7 @@ nav {
           <div class="ingredient-effectiveness"><span class="eff-label">Effectiveness</span><span class="eff-stars">★★★☆☆</span></div>
         </div>
 
-        <div class="ingredient-card">
+        <div class="ingredient-card" onclick="this.classList.toggle('open')">
           <div class="ingredient-header">
             <div class="ingredient-name-row">
               <span class="ingredient-name">Caffeine Anhydrous</span>
@@ -7888,7 +7888,7 @@ nav {
           <a class="ingredient-learn-more" onclick="navigate('ingredient-caffeine')">Learn More About Caffeine →</a>
         </div>
 
-        <div class="ingredient-card">
+        <div class="ingredient-card" onclick="this.classList.toggle('open')">
           <div class="ingredient-header">
             <div class="ingredient-name-row">
               <span class="ingredient-name">L-Theanine</span>
@@ -7900,7 +7900,7 @@ nav {
           <div class="ingredient-effectiveness"><span class="eff-label">Effectiveness</span><span class="eff-stars">★★★★★</span></div>
         </div>
 
-        <div class="ingredient-card">
+        <div class="ingredient-card" onclick="this.classList.toggle('open')">
           <div class="ingredient-header">
             <div class="ingredient-name-row">
               <span class="ingredient-name">AstraGin</span>
@@ -9116,6 +9116,16 @@ function sortProducts(mode) {
   });
 
   if (note) container.appendChild(note);
+
+  // Update rank badges on detail pages to match sorted order
+  document.querySelectorAll('.preworkout-card').forEach((card, idx) => {
+    const pid = card.getAttribute('data-pid');
+    if (!pid) return;
+    const detailPage = document.getElementById('page-product-' + pid);
+    if (!detailPage) return;
+    const badge = detailPage.querySelector('.rank-badge');
+    if (badge) badge.textContent = '#' + (idx + 1) + ' Ranked';
+  });
 }
 
 // ============================================================
