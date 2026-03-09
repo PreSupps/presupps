@@ -8431,15 +8431,16 @@ async function loadPriceData() {
       // Store last updated date
       product.lastUpdated = lastUpdated || new Date().toISOString().split('T')[0];
       
-      // Mark cheapest as best
+      // Mark cheapest as best + compute live price per serving
       if (product.stores.length > 0) {
         const minPrice = Math.min(...product.stores.map(s => s.price).filter(p => p > 0));
         product.stores.forEach(store => {
-          if (store.price === minPrice && store.price > 0) {
-            store.isBest = true;
-          }
+          if (store.price === minPrice && store.price > 0) store.isBest = true;
         });
-        
+
+        // Live price per serving — used by the sort
+        product.livePrice = minPrice / product.servings;
+
         // Update price history
         if (!product.priceHistory) {
           const avgPrice = product.stores.reduce((sum, s) => sum + s.price, 0) / product.stores.length;
@@ -8455,6 +8456,10 @@ async function loadPriceData() {
     
     // Update prices on product cards
     updateCardPrices();
+
+    // Re-run active sort so price sort reflects live Sheets data
+    const select = document.querySelector('.sort-select');
+    if (select && select.value) sortProducts(select.value);
   } catch (error) {
     console.error('❌ Error loading price data:', error);
     // Fall back to default generated prices
@@ -8778,8 +8783,11 @@ function sortProducts(mode) {
       return getCaf(pb) - getCaf(pa);
     }
     if (mode === 'price') {
-      // Parse price per serving from string like "$1.12"
-      const getPrice = p => parseFloat(String(p.priceServing).replace('$','')) || 999;
+      // Use live price per serving from Google Sheets if loaded, else fall back to hardcoded
+      const getPrice = p => {
+        if (p.livePrice) return p.livePrice;
+        return parseFloat(String(p.priceServing).replace('$','')) || 999;
+      };
       return getPrice(pa) - getPrice(pb); // cheapest first
     }
     return 0;
@@ -9424,11 +9432,29 @@ window.addEventListener('popstate', (event) => {
 });
 
 // Load price data from Google Sheets first
+// Sync all card scores and bars from PRODUCTS data (fixes any stale hardcoded values)
+function syncCardScores() {
+  document.querySelectorAll('.preworkout-card[data-pid]').forEach(card => {
+    const p = PRODUCTS[card.dataset.pid];
+    if (!p) return;
+    const scoreNum = card.querySelector('.score-num');
+    if (scoreNum) scoreNum.textContent = p.overall;
+    const bars = card.querySelectorAll('.score-bar-fill');
+    [p.energy, p.pump, p.focus].forEach((val, i) => {
+      if (bars[i]) bars[i].style.width = (val * 10) + '%';
+    });
+  });
+}
+
 loadPriceData().then(() => {
   // Check if there's a hash in URL on initial load
   const initialPage = window.location.hash.substring(1) || 'home';
   navigate(initialPage);
-  
+
+  // Sort by overall score on load and sync all card scores from PRODUCTS data
+  sortProducts('overall');
+  syncCardScores();
+
   // Render Where to Buy section for product page on load
   setTimeout(() => {
     renderWhereToBuy('gorilla');
