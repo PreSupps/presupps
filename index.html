@@ -994,16 +994,31 @@ nav {
   .supplement-facts-left { order: 2; }
   .where-to-buy-right { order: 1; }
 
-  /* Compare page fixes */
+  /* Where to Buy - store options on mobile */
+  .store-option {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .store-info { flex: 1 1 55%; min-width: 0; }
+  .store-logo { width: 36px; height: 36px; font-size: 11px; }
+  .store-pricing { flex-shrink: 0; text-align: right; }
+  .store-price { font-size: 18px; }
+  .btn-buy { flex-shrink: 0; padding: 8px 14px; font-size: 12px; }
+
+  /* Compare page */
   #page-compare > div { padding: 16px 16px 60px; }
   .compare-selected-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .compare-header-card .c-img { width: 80px; height: 80px; }
-  .sf-compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .sf-compare-row { font-size: 12px; }
+  .compare-header-card .c-img { width: 70px; height: 70px; }
+  .compare-header-card .c-score { font-size: 32px; }
   #compare-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  #compare-table > div { min-width: 480px; }
-  #sf-compare-row { min-width: unset !important; }
-  #sf-compare-row > div { min-width: 220px; }
+  #compare-table > div { min-width: 360px; }
+  .compare-row { min-width: 360px; }
+  .sf-compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #sf-compare-row { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #sf-compare-row > div { min-width: 200px; }
 }
 
   .product-image-box {
@@ -9373,6 +9388,8 @@ function updateCompareTable() {
 function renderCompareTable(prods) {
   const n = prods.length;
   const colW = n === 3 ? '1fr 1fr 1fr 1fr' : '1fr 1fr 1fr';
+  const isMobile = window.innerWidth < 768;
+  const labelCol = isMobile ? '90px' : '160px';
   const table = document.getElementById('compare-table');
 
   // helper: find best value index
@@ -9394,25 +9411,24 @@ function renderCompareTable(prods) {
         ${barMax ? `<div class="cell-bar-wrap"><div class="cell-bar-track"><div class="${fillClass}" style="width:${pct}%"></div></div></div>` : ''}
       </div>`;
     }).join('');
-    return `<div class="compare-row" style="grid-template-columns:160px ${prods.map(()=>'1fr').join(' ')}">
+    return `<div class="compare-row" style="grid-template-columns:${labelCol} ${prods.map(()=>'1fr').join(' ')}">
       <div class="compare-row-label">${label}</div>${cells}
     </div>`;
   }
 
   function textRow(label, vals) {
     const cells = vals.map(v => `<div class="compare-cell"><div class="cell-val" style="font-size:14px">${v}</div></div>`).join('');
-    return `<div class="compare-row" style="grid-template-columns:160px ${prods.map(()=>'1fr').join(' ')}">
+    return `<div class="compare-row" style="grid-template-columns:${labelCol} ${prods.map(()=>'1fr').join(' ')}">
       <div class="compare-row-label">${label}</div>${cells}
     </div>`;
   }
 
   function tagRow(label, vals) {
     const cells = vals.map(v => {
-      const isYes = v === true || v === 'No' || v === false;
       const tag = (v === false || v === 'No') ? `<span class="compare-tag yes">None ✓</span>` : `<span class="compare-tag no">Yes ✗</span>`;
       return `<div class="compare-cell">${tag}</div>`;
     }).join('');
-    return `<div class="compare-row" style="grid-template-columns:160px ${prods.map(()=>'1fr').join(' ')}">
+    return `<div class="compare-row" style="grid-template-columns:${labelCol} ${prods.map(()=>'1fr').join(' ')}">
       <div class="compare-row-label">${label}</div>${cells}
     </div>`;
   }
@@ -9422,7 +9438,7 @@ function renderCompareTable(prods) {
       const tags = p.ingredients.slice(0,3).map(i => `<span class="compare-tag yes" style="font-size:9px">${i}</span>`).join('');
       return `<div class="compare-cell" style="text-align:left">${tags}</div>`;
     }).join('');
-    return `<div class="compare-row" style="grid-template-columns:160px ${prods.map(()=>'1fr').join(' ')}">
+    return `<div class="compare-row" style="grid-template-columns:${labelCol} ${prods.map(()=>'1fr').join(' ')}">
       <div class="compare-row-label">${label}</div>${cells}
     </div>`;
   }
