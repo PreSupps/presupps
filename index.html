@@ -8185,8 +8185,8 @@ nav {
   min-width: 260px;
 }
 .sf-clone-header {
-  display: flex; align-items: center; gap: 10px;
-  padding: 14px 14px 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 14px 14px 10px;
 }
 .sf-clone-img {
   width: 48px; height: 48px; object-fit: contain;
@@ -9505,8 +9505,7 @@ function renderCompareTable(prods) {
 
   const sectionHead = (title) => `<div class="compare-section-head">${title}</div>`;
 
-  const html = headerGrid
-    + `<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0 20px">`
+  const html = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0 20px">`
     + sectionHead('Scores')
     + row('Overall', prods.map(p=>p.overall), '', 10)
     + row('Energy', prods.map(p=>p.energy), '', 10)
@@ -9558,8 +9557,17 @@ function injectLabelPanels(prods) {
     clone.style.margin = '0';
     // Add product name header above
     const header = document.createElement('div');
+    const reviewTarget = p.id === 'gorilla' ? 'product' : `product-${p.id}`;
     header.className = 'sf-clone-header';
-    header.innerHTML = `<img class="sf-clone-img" src="${p.img}" alt="${p.name}" onerror="this.style.display='none'"><div><div class="sf-clone-brand">${p.brand}</div><div class="sf-clone-name">${p.name}</div></div>`;
+    header.innerHTML = `
+      <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0">
+        <img class="sf-clone-img" src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
+        <div style="min-width:0">
+          <div class="sf-clone-brand">${p.brand}</div>
+          <div class="sf-clone-name">${p.name}</div>
+        </div>
+      </div>
+      <button class="c-buy" style="font-size:9px;padding:5px 8px;flex-shrink:0;white-space:nowrap;margin-left:8px" onclick="navigate('${reviewTarget}')">Review →</button>`;
     slot.appendChild(header);
     slot.appendChild(clone);
   });
