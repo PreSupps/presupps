@@ -1011,14 +1011,27 @@ nav {
   /* Compare page */
   #page-compare > div { padding: 16px 16px 60px; }
   .compare-selected-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .compare-header-card .c-img { width: 70px; height: 70px; }
-  .compare-header-card .c-score { font-size: 32px; }
+  .compare-header-card { padding: 12px 8px; }
+  .compare-header-card .c-img { width: 60px; height: 60px; }
+  .compare-header-card .c-img-fallback { font-size: 20px; }
+  .compare-header-card .c-score { font-size: 28px; }
+  .compare-header-card .c-name { font-size: 16px; margin: 2px 0 6px; }
+  .compare-header-card .c-brand { font-size: 9px; }
+  .compare-header-card .c-buy { font-size: 11px; padding: 6px 10px; }
   #compare-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  #compare-table > div { min-width: 360px; }
-  .compare-row { min-width: 360px; }
+  #compare-table > div { min-width: 320px; }
+  .compare-row { min-width: 320px; }
+  .compare-row-label { font-size: 11px; line-height: 1.3; }
   .sf-compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   #sf-compare-row { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  #sf-compare-row > div { min-width: 200px; }
+  #sf-compare-row > div { min-width: 140px; }
+  /* Smaller FDA label fonts on mobile */
+  .sf-compare-slot .supplement-facts-label { font-size: 8px !important; }
+  .sf-compare-slot .sf-title { font-size: 16px !important; }
+  .sf-compare-slot .sf-ingredient-name { font-size: 8px !important; line-height: 1.3 !important; }
+  .sf-compare-slot .sf-ingredient-amount { font-size: 8px !important; }
+  .sf-compare-slot .sf-ingredient-dv { font-size: 8px !important; min-width: 20px !important; }
+  .sf-compare-slot .sf-amount-per-serving { font-size: 8px !important; }
 }
 
   .product-image-box {
@@ -9454,8 +9467,8 @@ function renderCompareTable(prods) {
       <button class="c-buy" onclick="navigate('product')">View Full Review →</button>
     </div>`).join('');
 
-  const headerGrid = `<div style="display:grid;grid-template-columns:${prods.map(()=>'1fr').join(' ')};gap:12px;margin-bottom:24px">
-    ${headerCells}
+  const headerGrid = `<div style="display:grid;grid-template-columns:${labelCol} ${prods.map(()=>'1fr').join(' ')};gap:12px;margin-bottom:24px">
+    <div></div>${headerCells}
   </div>`;
 
   const sectionHead = (title) => `<div class="compare-section-head">${title}</div>`;
@@ -9490,7 +9503,8 @@ function renderCompareTable(prods) {
 
 function buildLabelComparison(prods) {
   // Placeholder — real labels injected by injectLabelPanels after DOM renders
-  const cols = prods.map(() => 'minmax(260px, 1fr)').join(' ');
+  const colMin = window.innerWidth < 768 ? '140px' : '260px';
+  const cols = prods.map(() => `minmax(${colMin}, 1fr)`).join(' ');
   return `<div id="sf-compare-row" style="display:grid;grid-template-columns:${cols};gap:16px;padding:20px 0;overflow-x:auto">
     ${prods.map(p => `<div id="sf-clone-${p.id}" class="sf-compare-slot"></div>`).join('')}
   </div>`;
