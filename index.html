@@ -955,12 +955,12 @@ nav {
   .hamburger { display: flex; }
   .hero { flex-direction: column; align-items: flex-start; padding: 32px 16px 24px; }
   .hero-stats { gap: 20px; }
-  .filters-bar { 
-    padding: 16px; 
+  .filters-bar {
+    padding: 16px;
     gap: 8px;
   }
   .search-input {
-    order: -1; /* Move search to top on mobile */
+    order: -1;
     width: 100%;
     max-width: 100%;
     margin-bottom: 8px;
@@ -984,6 +984,24 @@ nav {
   .page-hero, .category-tabs, .ingredients-wrap { padding-left: 16px; padding-right: 16px; }
   .search-wrap { margin-left: 0; width: 100%; }
   .search-input { width: 100%; }
+
+  /* Product page: stack supplement facts + where to buy, buy first */
+  .supplement-and-buy-wrapper {
+    grid-template-columns: 1fr;
+    padding: 0 16px;
+    margin: 24px auto;
+  }
+  .supplement-facts-left { order: 2; }
+  .where-to-buy-right { order: 1; }
+
+  /* Compare page fixes */
+  #page-compare > div { padding: 16px 16px 60px; }
+  .compare-selected-grid { grid-template-columns: 1fr; }
+  .compare-header-card .c-img { width: 80px; height: 80px; }
+  .sf-compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .sf-compare-row { font-size: 12px; }
+  #sf-compare-row { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #sf-compare-row > div { min-width: 260px; }
 }
 
   .product-image-box {
