@@ -1122,7 +1122,7 @@ nav {
     <div class="section-header">
       <span class="section-title">Top Ranked Pre-Workouts 2025</span>
       <div class="section-line"></div>
-      <span class="section-title">14 Products</span>
+      <span class="section-title">21 Products</span>
     </div>
 
     <div class="preworkout-card gold" data-pid="gorilla" onclick="navigate('product')" style="animation-delay:0.05s">
@@ -8756,17 +8756,6 @@ function formatLastUpdated(dateStr) {
 // ============================================================
 // SORT (homepage)
 // ============================================================
-const PRICE_PER_SERVING = {
-  gorilla: 112, totalwar: 150, ghost: 125, c4: 225, wokeaf: 133,
-  bulk: 133, psychotic: 86, godzilla: 125, bloodguts: 110, bamf: 133,
-  pulse: 225, tlbulk: 133, nutricost: 60, goldstandard: 83,
-};
-const CAFFEINE_MG = {
-  gorilla: 350, totalwar: 320, ghost: 250, c4: 300, wokeaf: 333,
-  bulk: 275, psychotic: 300, godzilla: 400, bloodguts: 200, bamf: 333,
-  pulse: 350, tlbulk: 200, nutricost: 150, goldstandard: 175,
-};
-
 function sortProducts(mode) {
   const container = document.querySelector('.rankings');
   const cards = [...container.querySelectorAll('.preworkout-card[data-pid]')];
@@ -8778,9 +8767,21 @@ function sortProducts(mode) {
     const pb = PRODUCTS[b.dataset.pid];
     if (!pa || !pb) return 0;
     if (mode === 'overall') return pb.overall - pa.overall;
-    if (mode === 'stim')    return (CAFFEINE_MG[pb.id] || 0) - (CAFFEINE_MG[pa.id] || 0);
     if (mode === 'value')   return pb.value - pa.value;
-    if (mode === 'price')   return (PRICE_PER_SERVING[pa.id] || 999) - (PRICE_PER_SERVING[pb.id] || 999);
+    if (mode === 'stim') {
+      // Parse caffeine number from string like "350mg" or "100-300mg" (use max)
+      const getCaf = p => {
+        const s = String(p.caffeine).replace('mg','');
+        const parts = s.split('-').map(Number);
+        return Math.max(...parts.filter(n => !isNaN(n)));
+      };
+      return getCaf(pb) - getCaf(pa);
+    }
+    if (mode === 'price') {
+      // Parse price per serving from string like "$1.12"
+      const getPrice = p => parseFloat(String(p.priceServing).replace('$','')) || 999;
+      return getPrice(pa) - getPrice(pb); // cheapest first
+    }
     return 0;
   });
 
