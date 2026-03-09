@@ -996,12 +996,14 @@ nav {
 
   /* Compare page fixes */
   #page-compare > div { padding: 16px 16px 60px; }
-  .compare-selected-grid { grid-template-columns: 1fr; }
+  .compare-selected-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
   .compare-header-card .c-img { width: 80px; height: 80px; }
   .sf-compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .sf-compare-row { font-size: 12px; }
-  #sf-compare-row { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  #sf-compare-row > div { min-width: 260px; }
+  #compare-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #compare-table > div { min-width: 480px; }
+  #sf-compare-row { min-width: unset !important; }
+  #sf-compare-row > div { min-width: 220px; }
 }
 
   .product-image-box {
